@@ -3,35 +3,119 @@
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="jquery-scrollto.min.js"></script>
 		
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 		<script src="http://code.highcharts.com/modules/exporting.js"></script>
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/async/1.22/async.min.js"></script>
 
-		<script src="chart-history.js"></script>
 
 		<style>
+
+			.unit {
+				width: 1170px;
+				margin: 8px auto;
+				clear: right;
+			}
+
 			.chart {
 				width: 900px;
-				margin: 20px auto; 
+			}
+
+			.info {
+				float: right;
+				width: 250px;
+				height: 150px;
+				border: 1px solid #000;
+				padding: 8px;
 			}
 			#markets {
-				height: 400px;
+				height: 250px;
 			}
 			#indicators {
-				height: 200px;
+				height: 150px;
 			}
+
+			#stories {
+				clear: both;
+				margin: 0 auto;
+				height: 215px;
+
+				overflow: auto;
+				width: 873px;
+			}
+
+			.story {
+				clear: right;
+				padding: 10px 0;
+			}
+
+			.story img {
+				float: right;
+			}
+
 		</style>
+
+		<script type="html/template" id="story">
+
+			<div id="s<%=id%>" class="story">
+				<img src="<%=img%>" />
+				<h3><%=title%></h3>
+				<div><em><%=start%>-<%=end%></em></div>
+				<div class="description"><%=description%></div>
+			</div>
+
+		</script>
 
 	</head>
 	<body>
-		<div id="markets"></div>
-		<div id="indicators"></div>
-
-		<div id="stories">
-			
+		<div class="unit">
+			<h1>History of Capital Markets</h1>
+			<p>
+				SAMPLE TEXT: Capital markets are inextricably tied to the economy and are both effected by drivers of major historical events.  These charts show how capital markets have driven and reacted to the evonomic events of the past 18 years.  
+			</p>
 		</div>
+		<div class="unit">
+			<div class="info">
+				<p>
+					Each year trillions of dollars move through capital markets.  This graph shows the volume of trading in Billions of dollars for each market by year.
+				</p>
+				<p>
+					The vertical bar highlights the time described the story below.
+				</p>
+			</div>
+			<div id="markets" class="chart"></div>
+		</div>
+		<div class="unit">
+			<div class="info">
+				<p>
+					Market Indicators are tied to the capital markets.  This graph shows the % rise and fall of the leading indicators by year.
+				</p>
+				<p>
+					The vertical bar highlights the time described the story below.
+				</p>
+			</div>
+			<div id="indicators" class="chart"></div>
+		<div>
+		<div class="unit">
+			<div id="stories"></div>
+		</div>
+		<script src="chart-history.js"></script>
+		<script type="text/javascript">
+
+			$("body").keydown(function(e) {
+			  if(e.keyCode == 32) { // Space
+			    chartHistory.startStop();
+			  }
+			  if(e.keyCode == 37) { // left
+			    chartHistory.lastStory();
+			  }
+			  else if(e.keyCode == 39) { // right
+			    chartHistory.nextStory();
+			  }
+			});
+		</script>
 
 	</body>
 </html>

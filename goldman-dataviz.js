@@ -1,4 +1,4 @@
-var chartHistory = (function () {
+$(function () {
 
     var marketsChart, indicatorsChart, play;
 
@@ -6,8 +6,7 @@ var chartHistory = (function () {
     var stories = [
         {
             'title': 'Lorem Ipsum 1',
-            'description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
-            'img': 'http://upload.wikimedia.org/wikipedia/commons/4/48/Control-flow-sample.svg',
+            'Description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
             'start': 1998,
             'end': 1999,
             'markets': [2, 4],
@@ -15,30 +14,21 @@ var chartHistory = (function () {
         },
         {
             'title': 'Lorem Ipsum 2',
-            'description': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numqua',
-            'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/04/calculate-sample-size.jpg',
+            'Description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
             'start': 1999,
-            'end': 2002,
-            'markets': [1, 3],
-            'indicators': [2, 3]
+            'end': 2002
         },
         {
             'title': 'Lorem Ipsum 3',
-            'description': 'one voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae con',
-            'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/10/probability-sampling.jpg',
+            'Description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
             'start': 2002,
-            'end': 2003,
-            'markets': [1, 2, 3, 5],
-            'indicators': [2, 4]
+            'end': 2003
         },
         {
             'title': 'Lorem Ipsum 4',
-            'description': 'one voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae con',
-            'img': 'http://images.all-free-download.com/images/graphicmedium/go_medias_sample_vector_pack_2_119602.jpg',
+            'Description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
             'start': 2008,
-            'end': 2011,
-            'markets': [0, 3, 5],
-            'indicators': [0, 1]
+            'end': 2011
         }
     ];
 
@@ -66,9 +56,6 @@ var chartHistory = (function () {
             align: 'left',
             verticalAlign: 'middle',
             borderWidth: 0
-        },
-        credits: {
-            enabled: false
         }
     };
 
@@ -96,9 +83,6 @@ var chartHistory = (function () {
             align: 'left',
             verticalAlign: 'middle',
             borderWidth: 0
-        },
-        credits: {
-            enabled: false
         }
     };
 
@@ -130,34 +114,14 @@ var chartHistory = (function () {
 
     };
 
-    var showPlotBands = function (chart, id) {
+    var showPlotBand = function (chart, start, end) {
 
-        var a;
-
-        for (var i = 0; i < stories.length; i++) {
-
-            if (i === id) {
-                chart.xAxis[0].addPlotBand({
-                    from: stories[i].start - 1996,
-                    to: stories[i].end - 1996,
-                    color: 'rgba(25, 10, 18, .2)',
-                    id: 'pb' + stories[i].start + stories[i].end
-                });
-            } else {
-                chart.xAxis[0].removePlotBand('pb' + stories[i].start + stories[i].end);
-            }
-
-
-        }
-
-    };
-
-    var drawStories = function () {
-
-        for (var i = 0; i < stories.length; i++) {
-            stories[i].id = i;
-            $("#stories").append(_.template($('#story').html(), stories[i]));
-        }
+        chart.xAxis.addPlotBand = [{
+            from: 0,
+            to: 3,
+            color: 'rgba(68, 170, 213, .2)',
+            id: 'pb' + start + end
+        }];
 
     };
 
@@ -168,48 +132,20 @@ var chartHistory = (function () {
         toggleSeries(marketsChart, story.markets);
         toggleSeries(indicatorsChart, story.indicators);
 
-        showPlotBands(marketsChart, currentStory);
-        showPlotBands(indicatorsChart, currentStory);
+        showPlotBand(marketsChart, story.start, story.end);
+        showPlotBand(indicatorsChart, story.start, story.end);
 
 
     };
 
     var nextStory = function () {
 
-        currentStory++;
-        currentStory = currentStory % stories.length;
+        currentStory = (currentStory++) % stories.length;
 
         showStory(currentStory);
 
-        $("#stories").scrollTo($("#s" + currentStory), 1000);
+        console.log(stories[currentStory]);
 
-    };
-
-    var lastStory = function () {
-
-        currentStory--;
-        currentStory = currentStory % stories.length;
-
-        showStory(currentStory);
-
-        $("#stories").scrollTo($("#s" + currentStory), 1000);
-
-    };
-
-    var start = function() {
-        play = setInterval(nextStory, 3000);
-    };
-
-    var stop = function () {
-        clearInterval(play);
-    };
-
-    var startStop = function () {
-        if (play) {
-            stop();
-        } else {
-            start();
-        }
     };
 
     // transform a value dataset into a % change dataset
@@ -298,16 +234,11 @@ var chartHistory = (function () {
             ],
             function () {
                 drawCharts();
-                drawStories();
+                play = setInterval(function () { console.log('hi'); }, 3000);
+                play = setInterval(nextStory, 3000);
             }
         );
 
     }();
 
-    return {
-        nextStory: nextStory,
-        lastStory: lastStory,
-        startStop: startStop
-    };
-
-}());
+});
