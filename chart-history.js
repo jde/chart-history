@@ -10,7 +10,7 @@ var chartHistory = (function () {
             'img': 'http://upload.wikimedia.org/wikipedia/commons/4/48/Control-flow-sample.svg',
             'start': 1998,
             'end': 1999,
-            'markets': [2, 4],
+            'markets': [5, 4],
             'indicators': [3]
         },
         {
@@ -28,8 +28,8 @@ var chartHistory = (function () {
             'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/10/probability-sampling.jpg',
             'start': 2002,
             'end': 2003,
-            'markets': [1, 2, 3, 5],
-            'indicators': [2, 4]
+            'markets': [1, 2, 3],
+            'indicators': [2, 3]
         },
         {
             'title': 'Lorem Ipsum 4',
@@ -37,7 +37,7 @@ var chartHistory = (function () {
             'img': 'http://images.all-free-download.com/images/graphicmedium/go_medias_sample_vector_pack_2_119602.jpg',
             'start': 2008,
             'end': 2011,
-            'markets': [0, 3, 5],
+            'markets': [2, 3],
             'indicators': [0, 1]
         }
     ];
@@ -109,11 +109,9 @@ var chartHistory = (function () {
 
         $('#markets').highcharts(marketOptions);
         marketsChart = $('#markets').highcharts();
+
         $('#indicators').highcharts(indicatorOptions);
         indicatorsChart = $('#indicators').highcharts();
-
-
-        showStory(0);
 
     };
 
@@ -152,6 +150,27 @@ var chartHistory = (function () {
 
     };
 
+    var drawTitles = function () {
+
+        for (var i = 0; i < stories.length; i++) {
+            stories[i].id = i;
+            $("#titles").append(_.template($('#title').html(), stories[i]));
+        }
+
+    };
+
+    var selectTitle = function (id) {
+
+        for (var i = 0; i < stories.length; i++) {
+            if (i === id) {
+                $("#t" + i).addClass("selected");
+            } else {
+                $("#t" + i).removeClass("selected");
+            }
+        }
+
+    };
+
     var drawStories = function () {
 
         for (var i = 0; i < stories.length; i++) {
@@ -164,6 +183,8 @@ var chartHistory = (function () {
     var showStory = function (id) {
 
         var i, story = stories[id];
+
+        selectTitle(id);
 
         toggleSeries(marketsChart, story.markets);
         toggleSeries(indicatorsChart, story.indicators);
@@ -299,6 +320,9 @@ var chartHistory = (function () {
             function () {
                 drawCharts();
                 drawStories();
+                drawTitles();
+                showStory(0);
+                start();
             }
         );
 
