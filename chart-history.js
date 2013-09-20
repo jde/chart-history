@@ -5,54 +5,93 @@ var chartHistory = (function () {
     var currentStory = 0;
     var stories = [
         {
-            'title': 'Lorem Ipsum 1',
-            'description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
-            'img': 'http://upload.wikimedia.org/wikipedia/commons/4/48/Control-flow-sample.svg',
-            'start': 1998,
-            'end': 1999,
-            'markets': [5, 4],
-            'indicators': [3]
-        },
-        {
-            'title': 'Lorem Ipsum 2',
-            'description': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numqua',
+            'title': 'Dot-Com Boom',
+            'description': 'The Dot com boom, driven by the IPO market, saw an unprecidented explosion the tech industry.  Many companies continued to shape the world we live in today.',
+            'articles': [
+                {
+                    'title': 'Guessing The Nex Chapter of Virtual Bookselling',
+                    'link': 'http://www.nytimes.com/1997/05/04/business/guessing-the-next-chapter-of-virtual-bookselling.html'
+                }
+            ],
             'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/04/calculate-sample-size.jpg',
-            'start': 1999,
+            'start': 1997,
+            'end': 2000,
+//            'markets': [4, 5],
+            'markets': [0, 1, 2, 3, 4, 5],
+            'indicators': [1]
+        },
+        {
+            'title': 'The Dot-Com Bubble Bursts',
+            'description': 'After years of intensifying speculation, the IPO market lost confidence in the use of capital.  The insuing burst can be clearly seen in the IPO and secondary offering markets as well as the decline in the S&P.  We also saw a rise in Gold prices, which is a traditional reaction to market disease.',
+            'articles': [
+                {
+                    'title': 'The Costs of Bursting Bubbles ',
+                    'link': 'http://www.nytimes.com/2002/09/22/opinion/the-costs-of-bursting-bubbles.html'
+                }
+            ],
+             'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/04/calculate-sample-size.jpg',
+            'start': 2000,
             'end': 2002,
-            'markets': [1, 3],
-            'indicators': [2, 3]
+//            'markets': [4, 5],
+            'markets': [0, 1, 2, 3, 4, 5],
+            'indicators': [1, 3]
         },
         {
-            'title': 'Lorem Ipsum 3',
-            'description': 'one voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae con',
+            'title': 'Housing Boom and Credit Expansion',
+            'description': 'Between 2000 and 2007 there was a rapid rise in Asset Backed market activity largely due to the Housing Boom.  During this period, many Americans were able to take out larger mortgages with lighter scrutiny on properties that were rapidly increasing in value.  As a reult, the market spiked to over $1.6 Trillion in 05 and 06 eclipsing the size of any other American market in history.  Spurred by an optimistic Fed lowering interest rates betinning in 2000, all other debt markets also saw growth during this time, as did the stock market and price of gold.',
+            'articles': [
+                {
+                    'title': 'Unending Housing Boom tossses Aside Rate Increase the Old Rule',
+                    'link': 'http://www.nytimes.com/2005/10/22/business/22charts.html?fta=y'
+                },
+                {
+                    'title': 'Crisis Looms in Market for Mortgages',
+                    'link': 'http://www.nytimes.com/2007/03/11/business/11mortgage.html?pagewanted=all'
+                }
+            ],
             'img': 'http://www.qualtrics.com/blog/wp-content/uploads/2010/10/probability-sampling.jpg',
-            'start': 2002,
-            'end': 2003,
-            'markets': [1, 2, 3],
-            'indicators': [2, 3]
+            'start': 2000,
+            'end': 2007,
+//            'markets': [0, 1, 2, 3],
+            'markets': [0, 1, 2, 3, 4, 5],
+            'indicators': [0, 1, 3]
         },
         {
-            'title': 'Lorem Ipsum 4',
-            'description': 'one voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae con',
+            'title': 'The Recovery',
+            'description': 'When it became clear that the Assets that fueled the Asset Backed markets were largely based on ill advised loans on overvalued properties, the Asset Backed market crashed.  In response, the Treasury issued debt to keep the economoy on track.  In addition, the Fed cut interest rates each year, bringing the many rates to historic lows.  Unemployment rose in 2008 through 2010 before leveling off in 2011 and 2012.',
+            'articles': [
+                {
+                    'title': 'Municipalities Feel Pinch as Another Debt Market Falters',
+                    'link': 'http://www.nytimes.com/2008/02/15/business/15muni.html?pagewanted=all'
+                },
+                {
+                    'title': 'It\'s Hard to Thaw a Frozen Market',
+                    'link': 'http://www.nytimes.com/2008/03/23/business/23view.html'
+                }
+            ],
             'img': 'http://images.all-free-download.com/images/graphicmedium/go_medias_sample_vector_pack_2_119602.jpg',
-            'start': 2008,
-            'end': 2011,
-            'markets': [2, 3],
-            'indicators': [0, 1]
+            'start': 2007,
+            'end': 2012,
+            'markets': [0, 1, 2, 3, 4, 5],
+            'indicators': [0, 2]
         }
     ];
 
     var marketOptions = {
         title: {
-            text: 'Volume traded on Capital Markets by Year',
+            text: 'Volume traded on Capital Markets by Year (in Billions of US$)',
             x: -20 //center
         },
         subtitle: {
             text: 'Source: SIFMA',
             x: -20
         },
-        xAxis: {},
+        xAxis: {
+        },
         yAxis: {
+            tickInterval: 100,
+            min: 0,
+            max: 2300,
             title: "Volume (in trillions of $)",
             plotLines: [{
                 value: 0,
@@ -74,7 +113,7 @@ var chartHistory = (function () {
 
     var indicatorOptions = {
         title: {
-            text: 'Indicators',
+            text: 'Indicators % Rise and Fall by Year',
             x: -20 //center
         },
         subtitle: {
@@ -83,6 +122,9 @@ var chartHistory = (function () {
         },
         xAxis: {},
         yAxis: {
+            tickInterval: 20,
+            min: -40,
+            max: 40,
             title: "",
             plotLines: [{
                 value: 0,
@@ -322,7 +364,7 @@ var chartHistory = (function () {
                 drawStories();
                 drawTitles();
                 showStory(0);
-                start();
+                //start();
             }
         );
 

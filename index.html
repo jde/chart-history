@@ -33,7 +33,7 @@
 				background-color: #eee;
 			}
 			#markets {
-				height: 250px;
+				height: 500px;
 			}
 			#indicators {
 				height: 150px;
@@ -62,6 +62,8 @@
 				float: left;
 				width: 250px;
 				list-style-type: none;
+				margin: 0;
+				padding: 0;
 			}
 
 			#titles li {
@@ -76,7 +78,7 @@
 		<script type="html/template" id="title">
 
 			<li id="t<%=id%>" class="title">
-				<%=title%> <em><%=start%>-<%=end%></em>
+				<%=title%> 
 			</li>
 
 		</script>
@@ -128,7 +130,7 @@
 			</div>
 			<div id="indicators" class="chart"></div>
 		<div>
-		<script src="chart-history.js?2"></script>
+		<script src="chart-history.js"></script>
 		<script type="text/javascript">
 
 			$("body").keydown(function(e) {

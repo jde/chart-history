@@ -5,12 +5,18 @@ $(function () {
     var currentStory = 0;
     var stories = [
         {
-            'title': 'Lorem Ipsum 1',
-            'Description': 'Delorit morelorit adipici congomorite et ist algothon quintomolous',
-            'start': 1998,
-            'end': 1999,
-            'markets': [2, 4],
-            'indicators': [3]
+            'title': 'Dot com Boom',
+            'Description': 'The Dot com boom, driven by the IPO market, saw an unprecidented explosion the tech industry.  Many companies continued to shape the world we live in today.',
+            'articles': [
+                {
+                    'title': 'Guessing The Nex Chapter of Virtual Bookselling',
+                    'link': 'http://www.nytimes.com/1997/05/04/business/guessing-the-next-chapter-of-virtual-bookselling.html'
+                }               
+            ]
+            'start': 1997,
+            'end': 2000,
+            'markets': [2],
+            'indicators': [1]
         },
         {
             'title': 'Lorem Ipsum 2',
