@@ -34,11 +34,12 @@ var chartHistory = (function () {
             line: {
                 events: {
                     mouseOver: function (e) {
-                        showDefinition(e.currentTarget._i);
-                    },
+                        console.log(e);
+                        showDefinition(e.currentTarget._i, e.currentTarget.color);
+                    }/*,
                     mouseOut: function (e) {
                         showDefinition(null);
-                    }
+                    }*/
                 },
                 marker: {
                     enabled: false
@@ -152,14 +153,24 @@ var chartHistory = (function () {
 
     };
 
-    var showDefinition = function (i) {
+    var showDefinition = function (i, color) {
 
         if (i === null) {
             $("#definitions").html(_.template($('#definition').html(), defaultDefinition));
             return null;
         }
 
-        $("#definitions").html(_.template($('#definition').html(), marketDefinitions[i]));
+        var col = parseInt(color.replace('#', ''), 16),
+            r = col >> 16 & 0xff,
+            g = col >> 8 & 0xff,
+            b = col & 0xff;
+
+        var $def = $("#definitions").html(_.template($('#definition').html(), marketDefinitions[i]));
+        $def.css({
+            color: color,
+            'border-left': '5px solid ' + color,
+            'background-color': 'rgba(' + r + ',' + g + ',' + b + ', .02)'
+        });
         return i;
 
     };

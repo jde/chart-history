@@ -1,0 +1,102 @@
+.unit {
+	width: 1000px;
+	margin: 8px auto;
+	clear: both;
+}
+
+.chart {
+	width: 618px;
+	float: right;
+}
+
+#markets {
+	height: 557px;
+}
+
+#indicators {
+	height: 150px;
+}
+
+#stories {
+	float: left;
+
+	margin: 0 auto;
+	height: 500px;
+
+	overflow: auto;
+	width: 382px;
+	padding-left: 0;
+	padding-right: 20px;
+	margin-top: 53px;
+}
+
+.story {
+	clear: right;
+	margin-bottom: 50px;
+	border-left: 5px solid #ccc;
+}
+
+.story img {
+	float: right;
+}
+
+.story .info {
+	background: #eee;
+	padding: 10px;
+	
+}
+
+.story .story-title {
+	margin: 0 0 10px 0;
+}
+
+#titles {
+	float: left;
+	width: 250px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#titles li {
+}
+
+#titles li.selected {
+	font-weight: bold;
+}
+
+#definitions {
+	width: 439px;
+	float: right;
+	top: -110px;
+	position: relative;
+	padding: 0 15px;
+}
+
+.articles {
+	padding-left: 0;
+}
+
+.articles li {
+	list-style: none;
+	list-style-type: none;
+	border-bottom: 1px solid #eee;
+	padding: 10px 0 10px 15px;
+	position: relative;
+	-webkit-transition: all .4s;
+}
+
+.articles li:hover {
+	
+}
+
+.articles li .date {
+	font-size: .8em;
+	color: #ccc;
+	font-style: normal;
+}
+
+.story .description {
+	font-size: 20px;
+	line-height: 30px;
+}
