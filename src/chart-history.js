@@ -1,4 +1,8 @@
 
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 var chartHistory = (function () {
 
     var marketsChart, indicatorsChart, play;
@@ -85,6 +89,11 @@ var chartHistory = (function () {
         },
         credits: {
             enabled: false
+        },
+        tooltip: {
+            formatter: function () {
+                return this.point.category + '<br><span style="color: ' + this.series.color + ';">' + toTitleCase(this.series.name) + '</span>   <strong>' + this.point.y + '</strong>';
+            }
         },
         exporting: {
             enabled: false
@@ -377,7 +386,7 @@ var chartHistory = (function () {
 
                 // for each row, add a series name the value of col 1
                 options.series.push({
-                    name: items.shift(),
+                    name: items.shift().toUpperCase(),
                     data: _.map(items, function (i) {return parseFloat(i.replace("$", ""));})
                 });
 
