@@ -86,6 +86,7 @@
 	top: -110px;
 	position: relative;
 	padding: 0 15px;
+	clear: both;
 }
 
 #definitions p {
@@ -109,6 +110,18 @@
 	padding: 10px 0 10px 15px;
 	position: relative;
 	-webkit-transition: all .4s;
+	font-size: 14px;
+	line-height: 1.42em;
+}
+
+.articles li a {
+	color: #428bca;
+	text-decoration: none;
+}
+
+.articles li a:hover {
+	color: #2a6496;
+	text-decoration: underline;
 }
 
 .articles li .date {
@@ -120,5 +133,10 @@
 .story .description {
 	font-size: 20px;
 	line-height: 30px;
+	color: #333333;
+}
+
+.text-muted {
+	color: #999999;
 }
 

@@ -28,9 +28,14 @@ var chartHistory = (function () {
             type: 'line'
         },
         title: {
-            text: 'Volume traded on Capital Markets by Year (in Billions of US$)',
+            text: 'Volume traded on Capital Markets by Year (in Billions of $US)',
             align: 'center',
-            y: 350
+            y: 350,
+            style: {
+                color: '#3E576F',
+                fontWeight: 'bold',
+                fontSize: '14px'
+            }
         },
         plotOptions: {
             line: {
@@ -86,14 +91,14 @@ var chartHistory = (function () {
             align: 'bottom',
             verticalAlign: 'bottom',
             borderWidth: 1,
-            margin: 50
+            margin: 40
         },
         credits: {
             enabled: false
         },
         tooltip: {
             formatter: function () {
-                return this.point.category + '<br><span style="color: ' + this.series.color + ';">' + toTitleCase(this.series.name) + '</span>   <strong>' + this.point.y + '</strong>';
+                return this.point.category + '<br><span style="color: ' + this.series.color + ';">' + toTitleCase(this.series.name) + '</span>   <strong>$' + this.point.y + ' bn</strong>';
             }
         },
         exporting: {
@@ -195,7 +200,7 @@ var chartHistory = (function () {
                 chart.xAxis[0].addPlotBand({
                     from: stories[i].start - 1996,
                     to: stories[i].end - 1996,
-                    color: 'rgba(47, 47, 47, .2)',
+                    color: '#eeeeee',
                     id: 'pb' + stories[i].start + stories[i].end,
                     label: {
                         text: _.template(templates.bandLabel, stories[i]),
@@ -204,7 +209,8 @@ var chartHistory = (function () {
                         textAlign: 'left',
                         style: {
                             'font-size': '1em',
-                            'font-weight': 'bold'
+                            'font-weight': 'bold',
+                            'color': '#aaaaaa'
                         }
                     }
                 });
