@@ -29,18 +29,15 @@ var templates = {
 		</li>\
 	',
 	bandLabel: '<%=title%>',
-	layout: '\
-		<div class="unit">\
-			<h3>The Ebb and Flow of Capital Markets</h3>\
-		</div>\
-		<div class="unit">\
-			<ul id="stories">\
-				<p class="headline">Companies and governments raise billions of dollars each year in the capital markets. See how the issuance of various types of debt and equity have changed over the past 16 years.</p>\
-			</ul>\
-			<div id="markets" class="chart"></div>\
-			<div id="definitions" class="definitions"></div>\
-		</div>\
-	'
+	layout: '<div class="unit">' +
+			'<h2 class="headline">The Ebb and Flow of Capital Markets</h2>' +
+			'<p class="subhead">Companies and governments raise billions of dollars each year in the capital markets.<br>See how the issuance of various types of debt and equity have changed over the past 16 years.</p>' +
+		'</div>' +
+		'<div class="unit">' +
+			'<div id="markets" class="chart"></div>' +
+			'<ul id="stories"></ul>' +
+			'<div id="definitions" class="definitions"></div>' +
+		'</div>'
 };
 
 

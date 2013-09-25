@@ -3,29 +3,34 @@
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#ebbandflow h3 {
-	text-align: center;
-	width: 100%;
-	margin: 10px;
-}
-
 .unit {
 	width: 900px;
 	margin: 0px auto;
 	clear: both;
 }
 
-.headline {
-	font-size: 16px;
+#ebbandflow .headline {
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 0px;
+}
+
+.subhead {
+	color: #333333;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 .chart {
 	width: 530px;
-	float: right;
+	float: left;
 }
 
 #markets {
 	height: 487px;
+	position: relative;
+	top: -40px;
 }
 
 #indicators {
@@ -33,7 +38,7 @@
 }
 
 #stories {
-	float: left;
+	float: right;
 
 	margin: 0 auto;
 	height: 466px;
@@ -41,8 +46,6 @@
 	overflow: auto;
 	width: 350px;
 	padding-left: 0;
-	padding-right: 20px;
-	margin-top: 5px;
 }
 
 .story {
@@ -82,11 +85,11 @@
 
 #definitions {
 	width: 300px;
-	float: right;
-	top: -110px;
+	top: -150px;
 	position: relative;
-	padding: 0 15px;
+	padding: 5px 15px;
 	clear: both;
+	left: 200px;
 }
 
 #definitions p {

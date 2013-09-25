@@ -25,7 +25,8 @@ var chartHistory = (function () {
 
     var marketOptions = {
         chart: {
-            type: 'line'
+            type: 'line',
+            backgroundColor: 'none'
         },
         title: {
             text: 'Volume traded on Capital Markets by Year (in Billions of $US)',
@@ -91,7 +92,8 @@ var chartHistory = (function () {
             align: 'bottom',
             verticalAlign: 'bottom',
             borderWidth: 1,
-            margin: 40
+            margin: 40,
+            borderColor: 'white'
         },
         credits: {
             enabled: false
@@ -132,7 +134,7 @@ var chartHistory = (function () {
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'middle',
-            borderWidth: 0
+            borderColor: '#ff0000'
         },
         credits: {
             enabled: false
