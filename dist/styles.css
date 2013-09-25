@@ -12,14 +12,15 @@
 #ebbandflow .headline {
 	text-align: center;
 	font-size: 2em;
-	margin-bottom: 0px;
+	margin: 0;
 }
 
 .subhead {
 	color: #333333;
 	font-size: 12px;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 8px;
+	margin-top: 0;
 }
 
 .chart {
@@ -85,7 +86,7 @@
 
 #definitions {
 	width: 300px;
-	top: -150px;
+	top: -158px;
 	position: relative;
 	padding: 5px 15px;
 	clear: both;
@@ -127,10 +128,20 @@
 	text-decoration: underline;
 }
 
-.articles li .date {
-	font-size: .8em;
+.articles li .pub-date {
+	font-size: 10px;
 	color: #ccc;
 	font-style: normal;
+	color: #808080;
+	margin: 0;
+	line-height: 14px;
+}
+
+.articles li .byline {
+	font-size: 10px;
+	color: #808080;
+	margin: 0;
+	line-height: 14x;
 }
 
 .story .description {
@@ -143,3 +154,13 @@
 	color: #999999;
 }
 
+.legend-helper {
+	font-size: 10px;
+	color: #999;
+	position: relative;
+	width: 150px;
+	position: absolute;
+	top: 505px;
+	padding-left: 40px;
+	background: url() no-repeat;
+}

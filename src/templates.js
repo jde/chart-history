@@ -20,7 +20,8 @@ var templates = {
 	',
 	article: '\
 		<li class="article">\
-			<div class="date"><em><%=date%> by <%=author%></em></div>\
+			<p class="byline">by <span style="text-transform: uppercase;"><%= author %></span></p>\
+			<p class="pub-date">Published: <%=date%></p>\
 			<div class="title">\
 				<a href="<%=url%>" target="poppythepopper">\
 					<b><%=title%></b>\
@@ -37,6 +38,7 @@ var templates = {
 			'<div id="markets" class="chart"></div>' +
 			'<ul id="stories"></ul>' +
 			'<div id="definitions" class="definitions"></div>' +
+			'<p class="legend-helper">Select a single item above for a more detailed view</p>' +
 		'</div>'
 };
 
