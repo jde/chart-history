@@ -322,9 +322,10 @@ var chartHistory = (function () {
 
     var marketOptions = {
         chart: {
-            type: 'line',
+            type: 'spline',
             backgroundColor: 'none'
         },
+        colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#777777'],
         title: {
             text: 'Volume traded on Capital Markets by Year (in Billions of $US)',
             align: 'center',
@@ -336,7 +337,7 @@ var chartHistory = (function () {
             }
         },
         plotOptions: {
-            line: {
+            spline: {
                 events: {
                     mouseOver: function (e) {
                         showDefinition(e.currentTarget._i, e.currentTarget.color);
@@ -369,7 +370,7 @@ var chartHistory = (function () {
         yAxis: {
 //            tickInterval: 100,
             min: 0,
-//            max: 2300,
+            max: 2500,
             title: "Volume (in trillions of $)",
             plotLines: [{
                 value: 0,
@@ -446,6 +447,14 @@ var chartHistory = (function () {
         $('#markets').highcharts(marketOptions);
         marketsChart = $('#markets').highcharts();
 
+        console.log($('.highcharts-legend'))
+
+        $('.highcharts-legend').on('click', '.highcharts-legend-item', function (e) {
+            e.preventDefault();
+            console.log(e);
+            console.log(this);
+        });
+
         //$('#indicators').highcharts(indicatorOptions);
         //indicatorsChart = $('#indicators').highcharts();
 
@@ -513,9 +522,7 @@ var chartHistory = (function () {
                         }
                     }
                 });
-            } else {
             }
-
         }
 
     };
@@ -695,11 +702,15 @@ var chartHistory = (function () {
                     name: items.shift().toUpperCase(),
                     data: _.map(items, function (i) {return parseFloat(i.replace("$", ""));})
                 });
-
             }
-
-
         });
+
+        options.series.push({
+            id: 'viewAll',
+            type: 'column',
+            name: 'VIEW ALL',
+            data: []
+        })
     };
     
     var loader = function () {
