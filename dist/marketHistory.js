@@ -326,8 +326,8 @@ var chartHistory = (function () {
         },
         title: {
             text: 'Volume traded on Capital Markets by Year (in Billions of US$)',
-            verticalAlign: 'bottom',
-            x: -20 //center
+            align: 'center',
+            y: 410
         },
         plotOptions: {
             line: {
@@ -382,7 +382,8 @@ var chartHistory = (function () {
             layout: 'vertical',
             align: 'bottom',
             verticalAlign: 'bottom',
-            borderWidth: 1
+            borderWidth: 1,
+            margin: 50
         },
         credits: {
             enabled: false
