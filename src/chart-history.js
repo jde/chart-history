@@ -30,7 +30,7 @@ var chartHistory = (function () {
         title: {
             text: 'Volume traded on Capital Markets by Year (in Billions of US$)',
             align: 'center',
-            y: 410
+            y: 350
         },
         plotOptions: {
             line: {

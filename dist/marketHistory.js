@@ -327,7 +327,7 @@ var chartHistory = (function () {
         title: {
             text: 'Volume traded on Capital Markets by Year (in Billions of US$)',
             align: 'center',
-            y: 410
+            y: 350
         },
         plotOptions: {
             line: {
@@ -767,11 +767,11 @@ var templates = {
 	bandLabel: '<%=title%>',
 	layout: '\
 		<div class="unit">\
-			<h1>The Ebb and Flow of Capital Markets</h1>\
+			<h3>The Ebb and Flow of Capital Markets</h3>\
 		</div>\
 		<div class="unit">\
 			<ul id="stories">\
-				<p>Companies and governments raise billions of dollars each year in the capital markets. See how the issuance of various types of debt and equity have changed over the past 16 years.</p>\
+				<p class="headline">Companies and governments raise billions of dollars each year in the capital markets. See how the issuance of various types of debt and equity have changed over the past 16 years.</p>\
 			</ul>\
 			<div id="markets" class="chart"></div>\
 			<div id="definitions" class="definitions"></div>\
