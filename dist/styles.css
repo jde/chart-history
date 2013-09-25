@@ -3,18 +3,18 @@ h1 {
 	align: center;
 }
 .unit {
-	width: 1000px;
-	margin: 8px auto;
+	width: 950px;
+	margin: 0px auto;
 	clear: both;
 }
 
 .chart {
-	width: 618px;
+	width: 568px;
 	float: right;
 }
 
 #markets {
-	height: 557px;
+	height: 457px;
 }
 
 #indicators {
