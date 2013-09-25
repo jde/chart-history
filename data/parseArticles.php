@@ -29,7 +29,8 @@ foreach ($eras as $era) {
 			'date' => $thisArticle[0],
 			'title' => $thisArticle[1],
 			'url' => $thisArticle[2],
-			'year' => (int) date("Y", strtotime($thisArticle[0]))
+			'year' => (int) date("Y", strtotime($thisArticle[0])),
+			'author' => $thisArticle[3]
 		));
 	}
 
