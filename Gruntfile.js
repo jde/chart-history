@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['lib/**/*', 'src/**/*.js'],
+        src: ['lib/**/*', 'src/templates.js', 'src/chart-history.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['src/**/*', 'lib/**/*'],
+      files: ['Gruntfile.js', 'src/**/*', 'lib/**/*'],
       tasks: ['concat']
     }
   });

@@ -1,4 +1,4 @@
-
+/*jshint multistr: true */
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
@@ -22,6 +22,10 @@ var chartHistory = (function () {
         {name: 'Standard & Poor\'s 500-stock index',description: 'An index of 500 stocks picked by Standard & Poor\'s to reflect the largest U.S. stocks by market value. The S&P 500 is a top benchmark for the overall U.S. stock market.'},
         {name: 'Gold Price Per Ounce',description: 'Many investors consider gold a hedge against inflation and market risk. Gold prices reflect the value of the physical asset as well as investors’ expectations about inflation and market volatility.'},
         {name: '30-Year Fixed-Rate Mortgage',description: 'A mortgage that has a fixed interest rate for the entire 30-year term of the loan. A 30-year fixed rate mortgage is the most common type of home loan and is used as a benchmark for the health of mortgage lending.'}];
+
+    var marketData = ",1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012---Municipal bonds,185.2,220.7,286.8,227.5,200.8,287.7,357.5,382.7,359.8,408.2,386.5,429.3,390.6,409.6,433.1,294.7,378.9---Corporate,342.7,466,610.9,629.2,587.5,776.1,636.7,775.8,780.7,752.8,1058.9,1128.3,707.2,901.9,1062.7,1012.1,1360.1---Asset-Backed,220.3,292.5,478.5,427.1,383.2,545,662.4,902.1,1184.2,1654.7,1671.3,1283.6,185.3,183.3,126.5,147.7,238.7---Treasury,612.4,540,438.4,364.6,312.4,380.7,571.6,745.2,853.3,746.2,788.5,752.3,1037.3,2074.9,2304,2103.2,2318.2---True IPOs,49.9,43.2,36.6,64.3,75.8,36,25.8,15.9,47.9,39.6,46.1,50.7,7.2,24.5,43.1,40.7,42.6---Secondary Offerings,65.5,75.9,71.2,97.5,112.9,87.6,75.2,74.8,96.7,97.8,99.3,96.4,153.7,227.7,187.5,137.3,189.1";
+
+    var indicatorData = ",1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012---10 Year Interest,6.4,6.4,5.3,5.7,6,5,4.6,4,4.3,4.3,4.8,4.6,3.7,3.26,3.21,2.79,1.8---S&P 500,740.74,970.43,1229.23,1469.25,1320.28,1148.08,879.82,1111.92,1211.92,1248.29,1418.3,1468.36,903.25,1115.1,1257.64,1257.6,1426.19---Unemployment ,5.6,5.3,4.6,4.3,4,4.2,5.7,5.8,5.7,5.3,4.7,4.6,5,7.8,9.8,9.1,8.3---Gold price per ounce,$369,$287.05,$288.7,$290.25,$272.65,$276.5,$342.75,$417.25,$435.6,$513,$635.7,$836.5,$869.75,$1087.5,$1420.25,$1531,$1664";
 
     var marketOptions = {
         chart: {
@@ -150,8 +154,6 @@ var chartHistory = (function () {
 
         $('#markets').highcharts(marketOptions);
         marketsChart = $('#markets').highcharts();
-
-        console.log($('.highcharts-legend'))
 
         $('.highcharts-legend').on('click', '.highcharts-legend-item', function (e) {
             e.preventDefault();
@@ -349,7 +351,7 @@ var chartHistory = (function () {
     // transform a value dataset into a % change dataset
     var fluxify = function(data) {
 
-        var out, lines = data.split('\n');
+        var out, lines = data.split('---');
 
         $.each(lines, function(lineNo, line) {
 
@@ -383,7 +385,8 @@ var chartHistory = (function () {
 
     var parseData = function(data, options) {
 
-        var lines = data.split('\n');
+        var lines = data.split('---');
+
         // Iterate over the lines and add categories or series
         $.each(lines, function(lineNo, line) {
 
@@ -414,37 +417,19 @@ var chartHistory = (function () {
             type: 'column',
             name: 'VIEW ALL',
             data: []
-        })
+        });
     };
     
-    var loader = function () {
-        async.parallel(
-            [
-                function (callback) {
-                    $.get('data/markets.csv', function (data) {
-                        parseData(data, marketOptions);
-                        callback(null);
-                    });
-                },
-                function (callback) {
-                    $.get('data/indicators.csv', function (data) {
-                        data = fluxify(data);
-                        parseData(data, indicatorOptions);
-                        callback(null);
-                    });
-                }
-            ],
-            function () {
-                drawLayout();
-                drawCharts();
-                drawStories();
-                drawTitles();
-                showStory(0);
-                //start();
-            }
-        );
-
-    }();
+    var init = function () {
+        parseData(marketData, marketOptions);
+        parseData(indicatorData, indicatorOptions);
+        drawLayout();
+        drawCharts();
+        drawStories();
+        drawTitles();
+        showStory(0);
+        //start();
+    };
 
     // $('#stories').on('scroll', function (e) {
     //     console.log(e);
@@ -454,7 +439,10 @@ var chartHistory = (function () {
         nextStory: nextStory,
         lastStory: lastStory,
         gotoStory: gotoStory,
-        startStop: startStop
+        startStop: startStop,
+
+        init: init
     };
 
 }());
+
